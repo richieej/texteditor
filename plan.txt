@@ -1,0 +1,12 @@
+StudentTextEditor:
+	need to store rows and cols: list<string>
+
+StudentUndo:
+	need to store actions, characters
+	store in a stack<node>
+	where node:
+		action
+		string
+
+StudentSpellCheck
+	place words in a hash map; use find to determine whether word is in the dictionary
