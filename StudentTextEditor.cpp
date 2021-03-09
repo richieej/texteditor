@@ -99,6 +99,8 @@ void StudentTextEditor::move(Dir dir) {
 		{
 			m_curRow++;
 			m_line++;
+			if (m_curCol > m_line->size())
+				m_curCol = m_line->size();
 		}
 		return;
 	}
@@ -110,7 +112,7 @@ void StudentTextEditor::move(Dir dir) {
 		{
 			m_curRow--;
 			m_line--;
-			m_curCol = m_line->size() - 1;
+			m_curCol = m_line->size()+1;
 		}
 		if (m_curCol > 0)
 			m_curCol--;
@@ -128,9 +130,9 @@ void StudentTextEditor::move(Dir dir) {
 	}
 	if (dir == Dir::RIGHT)
 	{
-		if (m_curRow == m_rows && m_curCol == m_Editor.rbegin()->size() - 1)
+		if (m_curRow == m_rows && m_curCol == m_Editor.rbegin()->size())
 			return;
-		if (m_line->size() - 1 == m_curCol)
+		if (m_line->size() == m_curCol)
 		{
 			m_curCol = 0;
 			m_curRow++;
@@ -149,9 +151,9 @@ void StudentTextEditor::del() {
 	// TODO
 	//list<string>::iterator it = m_Editor.begin();
 	//advance(it, m_curRow);
-	if (m_curRow == m_rows && m_curCol == m_line->size() - 1)
+	if (m_curRow == m_rows && m_curCol == m_line->size())
 		return;
-	if (m_curCol == m_line->size() - 1)
+	if (m_curCol == m_line->size())
 	{
 		getUndo()->submit(Undo::Action::JOIN, m_curRow, m_curCol, '0');
 		m_line++;
@@ -160,8 +162,8 @@ void StudentTextEditor::del() {
 		m_line--;
 		(*m_line) += line;
 	}
-	char ch = (*m_line)[m_curCol + 1];
-	(*m_line).erase(m_line->begin() + m_curCol + 1);
+	char ch = (*m_line)[m_curCol];
+	(*m_line).erase(m_line->begin() + m_curCol);
 	getUndo()->submit(Undo::Action::DELETE, m_curRow, m_curCol, ch);
 
 }
@@ -280,4 +282,5 @@ void StudentTextEditor::undo() {
 		(*m_line) += line;
 		m_rows--;
 	}
+
 }

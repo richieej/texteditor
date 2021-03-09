@@ -31,8 +31,8 @@ StudentUndo::Action StudentUndo::get(int &row, int &col, int& count, std::string
 		doing = Undo::Action::SPLIT;
 	else if (ac == Undo::Action::SPLIT)
 		doing = Undo::Action::JOIN;
-	m_stack.top().m_row = row;
-	m_stack.top().m_col = col;
+	row = m_stack.top().m_row;
+	col = m_stack.top().m_col;
 	count = 1;
 	text = "";
 
@@ -57,9 +57,16 @@ StudentUndo::Action StudentUndo::get(int &row, int &col, int& count, std::string
 	}
 	else if (doing == Undo::Action::INSERT)
 	{
+		int prev_row = m_stack.top().m_row;
+		int prev_col = m_stack.top().m_col;
 		while (!m_stack.empty() && m_stack.top().m_action == Undo::Action::DELETE)
 		{
-			text += m_stack.top().ch;
+			if (prev_col == m_stack.top().m_col)
+				text = m_stack.top().ch + text;
+			else
+				text += m_stack.top().ch;
+			prev_row = m_stack.top().m_row;
+			prev_col = m_stack.top().m_col;
 			m_stack.pop();
 		}
 	}
@@ -74,4 +81,8 @@ StudentUndo::Action StudentUndo::get(int &row, int &col, int& count, std::string
 
 void StudentUndo::clear() {
 	// TODO
+	while (!m_stack.empty())
+	{
+		m_stack.pop();
+	}
 }
