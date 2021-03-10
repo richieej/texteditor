@@ -70,11 +70,6 @@ bool StudentTextEditor::save(std::string file) {
 
 void StudentTextEditor::reset() {
 	// TODO
-	//m_line = m_Editor.end();
-	//for (auto it = m_Editor.begin();it != m_Editor.end();it++)
-	//{
-		//it = m_Editor.erase(it);
-	//}
 	m_Editor.clear();
 	//m_Editor.push_back("");
 	m_line = m_Editor.begin();
@@ -279,10 +274,10 @@ void StudentTextEditor::undo() {
 	{
 		string line = *m_line;
 		m_line = m_Editor.erase(m_line);
-		m_line--;
-		m_curRow--;
-		m_curCol = m_line->size();
-		(*m_line) += line;
+		//m_line--;
+		//m_curRow--;
+		m_curCol = line.size();
+		(*m_line) = line + *m_line;
 		m_rows--;
 	}
 

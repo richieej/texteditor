@@ -44,24 +44,26 @@ bool StudentSpellCheck::spellCheck(std::string word, int max_suggestions, std::v
 		word[i] = tolower(word[i]);
 	if (!m_dictionary->search(word))
 	{
-		std::string s = word;
+		std::string str = word;
 		int count_sug = 0;
 		suggestions.clear();
 		for (int i = 0; i < word.size();i++)
 		{
-			std::string alphabet = "abcdefghijklmnopqrstuvwxyz";
+			std::string alphabet = "abcdefghijklmnopqrstuvwxyz\'";
 			for (char k : alphabet)
 			{
+				std::string s = str;
 				s.replace(i, 1, std::string(1, k));
 				if (m_dictionary->search(s))
 				{
 					suggestions.push_back(s);
 					count_sug++;
 					if (count_sug > max_suggestions)
-						break;
+						return false;
 				}
 			}
 		}
+		return false;
 	}
 	else
 		return true;
