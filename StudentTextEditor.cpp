@@ -50,6 +50,7 @@ bool StudentTextEditor::load(std::string file) {
 		m_Editor.push_back(s);
 		m_rows++;
 	}
+	m_rows--;
 	m_line = m_Editor.begin();
 	return true;
 	
@@ -90,6 +91,8 @@ void StudentTextEditor::move(Dir dir) {
 		{
 			m_curRow--;
 			m_line--;
+			if (m_curCol > m_line->size())
+				m_curCol = m_line->size();
 		}
 		return;
 	}

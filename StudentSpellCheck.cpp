@@ -84,7 +84,7 @@ void StudentSpellCheck::spellCheckLine(const std::string& line, std::vector<Spel
 			{
 				Position p;
 				p.start = i - word.size();
-				p.end = i;
+				p.end = i-1;
 				problems.push_back(p);
 			}
 			word = "";
@@ -94,33 +94,12 @@ void StudentSpellCheck::spellCheckLine(const std::string& line, std::vector<Spel
 			if (!m_dictionary->search(word))
 			{
 				Position p;
-				p.start = i - word.size() + 1;
+				p.start = i - word.size()+1;
 				p.end = i;
 				problems.push_back(p);
 			}
 		}
-		/*if (!m_dictionary->search(word))
-		{
-			Position p;
-			p.start = i - word.size();
-			p.end = i;
-			problems.push_back(p);
-		}*/
 	}
 }
 
 
-/*
-if (line[i] == '\'' && word[word.size() - 1] == '\'')
-	{
-		if (!m_dictionary->search(word))
-		{
-			Position p;
-			p.start = i - word.size() - 1;
-			p.end = i - 1;
-			problems.push_back(p);
-		}
-		//spellCheck(word);
-		word = "";
-	}
-else*/

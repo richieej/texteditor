@@ -1,8 +1,5 @@
-﻿  StudentTextEditor.cpp
-C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentTextEditor.cpp(103,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentTextEditor.cpp(115,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentTextEditor.cpp(128,28): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentTextEditor.cpp(183,28): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentTextEditor.cpp(246,21): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentTextEditor.cpp(281,28): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+﻿  StudentSpellCheck.cpp
+C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentSpellCheck.cpp(86,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentSpellCheck.cpp(97,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\Wurd\StudentSpellCheck.cpp(69): warning C4715: 'StudentSpellCheck::spellCheck': not all control paths return a value
   Wurd.vcxproj -> C:\Users\rjian\OneDrive\Desktop\ucla\cs32\proj4\Wurd\x64\Debug\Wurd.exe
